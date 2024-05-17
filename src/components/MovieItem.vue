@@ -1,8 +1,7 @@
-<!-- src/components/MovieItem.vue -->
 <template>
     <div class="movie-item">
-      <h3>{{ movie.title }}</h3>
-      <p>{{ movie.description }}</p>
+      <h3>{{ movie }}</h3>
+      <!-- <p>{{ movie.description }}</p> -->
     </div>
   </template>
   

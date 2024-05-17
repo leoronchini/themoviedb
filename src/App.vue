@@ -1,4 +1,3 @@
-<!-- src/App.vue -->
 <template>
   <div id="app">
     <h1>Movie List</h1>
