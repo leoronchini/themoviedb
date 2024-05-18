@@ -1,6 +1,10 @@
 <template>
     <div>
         <h1>Movie List</h1>
+        <div>
+            <input v-model="searchQuery" placeholder="Search for a movie" />
+            <button @click="searchMovies">Search</button>
+        </div>
         <div class="toggle-buttons">
             <button @click="toggleMovieType('popular')" :class="{ active: movieType === 'popular' }">Popular
                 Movies</button>
@@ -68,7 +72,12 @@ export default {
         goToMovieDetails(id) {
             console.log('id', id)
             this.$router.push({ name: 'MovieDetails', params: { id } });
-        }
+        },
+        searchMovies() {
+            if (this.searchQuery) {
+                this.$router.push({ name: 'SearchResults', params: { query: encodeURIComponent(this.searchQuery) } });
+            }
+        },
     },
 
 };
