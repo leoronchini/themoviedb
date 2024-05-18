@@ -1,24 +1,30 @@
 <template>
-  <div v-if="movie">
-    <div class="banner">
-      <img :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`" alt="Backdrop" class="backdrop" />
-      <div class="movie-info">
-        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
-        <div class="info">
-          <h2>{{ movie.title }}</h2>
-          <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
-          <p><strong>Overview:</strong> {{ movie.overview }}</p>
-          <p><strong>Vote Average:</strong> {{ movie.vote_average }}</p>
-          <p><strong>Vote Count:</strong> {{ movie.vote_count }}</p>
-        </div>
+  <div class="bg-gray-900 text-white min-h-screen">
+    <div class="relative">
+      <img :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`" alt="Backdrop"
+        class="w-full h-96 object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+      <div class="absolute bottom-0 left-0 p-8">
+        <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`" alt="Poster" class="w-48 h-auto rounded-lg" />
       </div>
     </div>
-    <div class="cast">
-      <h3>Cast</h3>
-      <div v-if="cast.length">
-        <div v-for="actor in cast" :key="actor.cast_id" class="actor-card">
-          <img v-lazy="`https://image.tmdb.org/t/p/w500${actor.profile_path}`" alt="Actor Photo" class="actor-photo" />
-          <p>{{ actor.name }}</p>
+    <div class="container mx-auto py-8 px-4">
+      <h1 class="text-4xl font-bold mb-4">{{ movie.title }}</h1>
+      <p class="text-gray-400 mb-6">{{ movie.release_date }}</p>
+      <div class="flex items-center mb-4">
+        <span class="text-yellow-500 text-xl mr-2">{{ movie.vote_average }}</span>
+        <span class="text-gray-400">({{ movie.vote_count }} votes)</span>
+      </div>
+      <p class="mb-6">{{ movie.overview }}</p>
+      <div>
+        <h2 class="text-2xl font-bold mb-4">Cast</h2>
+        <div class="flex overflow-x-auto space-x-4 py-4">
+          <div v-for="member in cast" :key="member.cast_id" class="cast-member flex-none w-32">
+            <img v-lazy="`https://image.tmdb.org/t/p/w300${member.profile_path}`" alt="Cast Member"
+              class="w-full h-auto rounded-lg" />
+            <h3 class="text-lg font-semibold mt-2">{{ member.name }}</h3>
+            <p class="text-sm text-gray-400">{{ member.character }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -76,53 +82,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.banner {
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.backdrop {
-  width: 100%;
-  height: auto;
-}
-
-.movie-info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-.movie-poster {
-  width: 150px;
-  height: auto;
-  margin-right: 20px;
-}
-
-.info {
-  text-align: left;
-}
-
-.cast {
-  padding: 20px;
-}
-
-.actor-card {
-  display: inline-block;
-  width: 120px;
-  text-align: center;
-  margin: 10px;
-}
-
-.actor-photo {
-  width: 100%;
-  height: auto;
-}
-</style>

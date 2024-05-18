@@ -1,10 +1,16 @@
 <template>
   <div>
-    <h1>Search Results for "{{ query }}"</h1>
-    <div v-if="movies.length">
-      <div v-for="movie in movies" :key="movie.id" class="movie-card" @click="goToMovieDetails(movie.id)">
-        <h2>{{ movie.title }}</h2>
-        <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
+    <div v-if="movies.length" class="bg-gray-900 text-white py-8">
+      <div class="container mx-auto">
+        <h2 class="text-3xl font-bold mb-4">Search Results for "{{ query }}"</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div v-for="movie in movies" :key="movie.id" class="movie-card" @click="goToMovieDetails(movie.id)">
+            <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster"
+              class="w-full h-auto rounded-lg" />
+            <h3 class="text-lg font-semibold mt-2">{{ movie.title }}</h3>
+            <p class="text-sm text-gray-400">{{ movie.release_date }}</p>
+          </div>
+        </div>
       </div>
       <div>
         <button @click="previousPage" :disabled="currentPage === 1">Previous</button>
@@ -74,18 +80,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.movie-card {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  cursor: pointer;
-}
-
-.movie-card img {
-  width: 100px;
-  height: auto;
-  margin-right: 20px;
-}
-</style>
