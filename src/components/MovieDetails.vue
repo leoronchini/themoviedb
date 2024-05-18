@@ -1,6 +1,5 @@
 <template>
   <div v-if="movie">
-    <h1>TELA DE DETALHES DO FILME</h1>
     <div class="banner">
       <img :src="`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`" alt="Backdrop" class="backdrop" />
       <div class="movie-info">

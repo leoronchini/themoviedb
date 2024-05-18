@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Movie List</h1>
         <div>
             <input v-model="searchQuery" placeholder="Search for a movie" />
             <button @click="searchMovies">Search</button>

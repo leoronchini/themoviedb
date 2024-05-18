@@ -1,44 +1,22 @@
 <template>
-    <header>
-      <nav>
-        <ul>
-          <li><router-link to="/">Home</router-link></li>
-        </ul>
-      </nav>
-    </header>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Header',
-  };
-  </script>
-  
-  <style scoped>
-  header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  nav ul li {
-    display: inline;
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-  </style>
-  
+  <header class="bg-gray-900 text-white">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <div class="flex items-center space-x-4">
+        <a href="/" class="text-xl font-bold">TMDB</a>
+        <nav class="hidden md:flex space-x-4">
+          <a href="/" class="hover:text-gray-400">Movies</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+</template>
+
+<script>
+export default {
+  name: 'Header',
+};
+</script>
+
+<style scoped>
+/* Estilos adicionais se necessário */
+</style>
