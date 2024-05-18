@@ -4,7 +4,7 @@
     <div v-if="movies.length">
       <div v-for="movie in movies" :key="movie.id" class="movie-card" @click="goToMovieDetails(movie.id)">
         <h2>{{ movie.title }}</h2>
-        <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
+        <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
       </div>
       <div>
         <button @click="previousPage" :disabled="currentPage === 1">Previous</button>

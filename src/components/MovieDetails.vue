@@ -18,7 +18,7 @@
       <h3>Cast</h3>
       <div v-if="cast.length">
         <div v-for="actor in cast" :key="actor.cast_id" class="actor-card">
-          <img :src="`https://image.tmdb.org/t/p/w500${actor.profile_path}`" alt="Actor Photo" class="actor-photo" />
+          <img v-lazy="`https://image.tmdb.org/t/p/w500${actor.profile_path}`" alt="Actor Photo" class="actor-photo" />
           <p>{{ actor.name }}</p>
         </div>
       </div>

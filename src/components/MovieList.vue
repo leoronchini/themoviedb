@@ -13,7 +13,7 @@
         </div>
         <div v-if="movies.length">
             <div v-for="movie in movies" :key="movie.id" class="movie-card" @click="goToMovieDetails(movie.id)">
-                <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
+                <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster" class="movie-poster" />
                 <div class="movie-info">
                     <h2>{{ movie.title }}</h2>
                     <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
@@ -70,7 +70,6 @@ export default {
             this.fetchMovies(this.currentPage);
         },
         goToMovieDetails(id) {
-            console.log('id', id)
             this.$router.push({ name: 'MovieDetails', params: { id } });
         },
         searchMovies() {
