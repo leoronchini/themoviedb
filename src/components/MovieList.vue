@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="overflow-x-auto whitespace-nowrap space-x-4 flex">
-                <div v-for="movie in movies" :key="movie.id" class="inline-block movie-card"
+                <div v-for="movie in movies" :key="movie.id" class="cursor-pointer inline-block movie-card"
                     @click="goToMovieDetails(movie.id)">
                     <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster"
                         class="w-48 h-auto rounded-lg movie-poster" />
@@ -52,41 +52,35 @@ export default {
     data() {
         return {
             movies: [],
-            currentPage: 1,
             movieType: 'popular'
         };
     },
     mounted() {
-        this.fetchMovies(this.currentPage);
+        this.fetchMovies();
     },
     methods: {
-        async fetchMovies(page) {
+        async fetchMovies() {
             try {
-                if (page < 1) return;
                 const endpoint = this.movieType === 'popular' ? '/movie/popular' : '/trending/movie/day';
                 const response = await actions.get(endpoint, {
                     params: {
                         api_key: apiKey,
-                        page: page,
                     },
                 });
                 this.movies = response.data.results;
-                this.currentPage = page;
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
         },
         toggleMovieType(type) {
             this.movieType = type;
-            this.currentPage = 1;
-            this.fetchMovies(this.currentPage);
+            this.fetchMovies();
         },
         goToMovieDetails(id) {
             this.$router.push({ name: 'MovieDetails', params: { id } });
         },
         searchMovies() {
             if (this.searchQuery) {
-                console.log('teste')
                 this.$router.push({ name: 'SearchResults', params: { query: encodeURIComponent(this.searchQuery) } });
             }
         },
@@ -95,3 +89,19 @@ export default {
 };
 
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+    background-color: transparent;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4f4f4f;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #333;
+}
+</style>

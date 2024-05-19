@@ -23,3 +23,12 @@ Follow this instructions to run the project in your computer.
 npm install
 npm run dev
 ```
+
+## Next steps
+To complete this project, some steps will still be taken, such as:
+
+- End-to-end tests
+- Update css styles
+- Error handling
+- Creation of other functionalities
+- ...

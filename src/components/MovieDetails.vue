@@ -81,3 +81,19 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+::-webkit-scrollbar {
+    background-color: transparent;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4f4f4f;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #333;
+}
+</style>
