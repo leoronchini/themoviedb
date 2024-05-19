@@ -1,19 +1,15 @@
 <template>
     <div class="relative bg-gray-800 text-white p-8  shadow-lg overflow-hidden">
-        <!-- <img src="https://www.themoviedb.org/assets/2/v4/logos/stacked-blue-65f8d6fcdcccbfc236d8b775d67ff55794ff9aaeb63b0f1712e9e304f860f2ea.svg" alt="TMDB Logo" class="absolute top-0 right-0 w-24 h-24 opacity-10"> -->
         <div class="relative z-10">
             <h1 class="text-3xl font-bold mb-4">Welcome.</h1>
             <p class="text-lg mb-6">Millions of movies, TV shows and people to discover. Explore now.</p>
-            <div class="relative w-full max-w-md mx-auto">
-                <input v-model="searchQuery" @keyup.enter="searchMovies" type="text"
-                    class="w-full px-4 py-2 border border-gray-400 rounded-full focus:outline-none focus:border-blue-500"
-                    placeholder="Search for a movie, tv show, person......" />
-                <button @click="searchMovies" class="absolute right-2 top-2 text-gray-500 hover:text-gray-700">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3.5a7.5 7.5 0 016.36 10.65z"></path>
-                    </svg>
+            <div class="w-full max-w-lg flex mt-6">
+                <input type="text" @keyup.enter="searchMovies" v-model="searchQuery"
+                    placeholder="Search for a movie, tv show, person..."
+                    class="w-full px-4 py-2 text-black rounded-l-lg focus:outline-none" />
+                <button @click="searchMovies"
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg">
+                    Search
                 </button>
             </div>
         </div>
@@ -49,8 +45,7 @@
 
 <script>
 import actions from '@/modules/Movie';
-//TODO: configurar o .env
-const apiKey = '08048f421b677ab3b373cd10c1f36b16';
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 export default {
     name: 'MovieList',

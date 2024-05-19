@@ -23,8 +23,7 @@
 
 <script>
 import actions from '@/modules/Movie';
-//TODO: configurar .env
-const apiKey = '08048f421b677ab3b373cd10c1f36b16';
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 export default {
   name: 'SearchResults',

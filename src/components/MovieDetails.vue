@@ -17,7 +17,7 @@
       </div>
       <p class="mb-6">{{ movie.overview }}</p>
       <div>
-        <h2 class="text-2xl font-bold mb-4">Cast</h2>
+        <h2 class="text-2xl font-bold mb-4">Top Billed Cast</h2>
         <div class="flex overflow-x-auto space-x-4 py-4">
           <div v-for="member in cast" :key="member.cast_id" class="cast-member flex-none w-32">
             <img v-lazy="`https://image.tmdb.org/t/p/w300${member.profile_path}`" alt="Cast Member"
@@ -33,8 +33,7 @@
 
 <script>
 import actions from '@/modules/Movie';
-//TODO: configurar o .env
-const apiKey = '08048f421b677ab3b373cd10c1f36b16';
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
 
 export default {
   name: 'MovieDetails',
