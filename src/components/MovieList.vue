@@ -29,12 +29,12 @@
                     </button>
                 </div>
             </div>
-            <div class="overflow-x-auto whitespace-nowrap space-x-4 flex">
+            <div class="overflow-x-auto whitespace-nowrap space-x-4 flex mt-4">
                 <div v-for="movie in movies" :key="movie.id" class="cursor-pointer inline-block movie-card"
                     @click="goToMovieDetails(movie.id)">
                     <img v-lazy="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" alt="Poster"
-                        class="w-48 h-auto rounded-lg movie-poster" />
-                    <h3 class="text-lg font-semibold mt-2">{{ movie.title }}</h3>
+                        class="w-48 h-72 object-cover rounded-lg movie-poster" />
+                    <h3 class="text-lg font-semibold mt-2 truncate">{{ movie.title }}</h3>
                     <p class="text-sm text-gray-400">{{ movie.release_date }}</p>
                 </div>
             </div>
@@ -91,6 +91,14 @@ export default {
 </script>
 
 <style scoped>
+.movie-card {
+    width: 12rem;
+}
+
+.movie-poster {
+    height: 18rem;
+}
+
 ::-webkit-scrollbar {
     background-color: transparent;
     height: 8px;
