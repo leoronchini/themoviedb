@@ -32,3 +32,7 @@ To complete this project, some steps will still be taken, such as:
 - Error handling
 - Creation of other functionalities
 - ...
+
+## App
+To see the project running, access the following link to Vercel:
+https://themoviedb-4ocdkd4v2-leonardo-ronchinis-projects.vercel.app/
