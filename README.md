@@ -1,29 +1,25 @@
 # themoviedb
 
-This template should help get you started developing with Vue 3 in Vite.
+This 3 days project is an simple movies visualizer created with Vue.js and TMDB api. The purpose is create a similar project to The Movie Database(TMDB) using tools like Axios, Router and Tailwind.
 
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+**Tools and stacks used in this project:**
+- `Vue.js 3 with Vite`
+- `Axios`
+- `Vue Lazy load`
+- `Vue router`
+- `Tailwind css`
 
 ## Project Setup
+Follow this instructions to run the project in your computer.
+
+
+**1-** Change .env.example filename to .env.local
+
+**2-** Copy and paste your api to <YOUR_API_KEY> section in .env.local file
+
+**3-** Run the following commands to install dependencies and run in local ambient
 
 ```sh
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
